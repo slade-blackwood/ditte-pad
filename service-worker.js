@@ -2,6 +2,8 @@ const CACHE_NAME = 'ditte-pad-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/ditte_pad.html',
+  '/Credits & Dedication.html',
   '/ditte_pad.css',
   '/ditte_pad.js',
   '/favicon.png'
