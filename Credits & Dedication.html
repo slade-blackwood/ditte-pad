@@ -128,14 +128,40 @@
   <div class="dedication">
     This project is dedicated with heartfelt gratitude and appreciation to all who inspired, supported, and believed in it.
   </div>
+
   <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('Service Worker registered:', reg.scope))
-        .catch(err => console.error('Service Worker registration failed:', err));
-    });
-  }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration.scope);
+
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed') {
+                  if (navigator.serviceWorker.controller) {
+                    // New update available
+                    if (confirm("A new update is ready. Click OK to install and reload.")) {
+                      newWorker.postMessage({ action: 'skipWaiting' });
+                    }
+                  }
+                }
+              });
+            });
+          })
+          .catch(err => {
+            console.error('Service Worker registration failed:', err);
+          });
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (refreshing) return;
+          refreshing = true;
+          window.location.reload();
+        });
+      });
+    }
   </script>
 </body>
 </html>

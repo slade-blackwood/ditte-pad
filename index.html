@@ -114,15 +114,44 @@
   </main>
 
   <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('Service Worker registered:', reg.scope))
-        .catch(err => console.error('Service Worker registration failed:', err));
-    });
-  }
-</script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration.scope);
+
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed') {
+                  if (navigator.serviceWorker.controller) {
+                    // New update available
+                    showUpdatePrompt(() => {
+                      newWorker.postMessage({ action: 'skipWaiting' });
+                    });
+                  }
+                }
+              });
+            });
+          })
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+    }
+
+    function showUpdatePrompt(onAccept) {
+      // Customize this UI however you want
+      if (confirm("A new update is ready. Click OK to install and reload.")) {
+        onAccept();
+      }
+    }
+  </script>
 
 </body>
 </html>
-
