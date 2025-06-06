@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DITTE'S PAD - View & Edit Mode</title>
+
+  <!-- App Icon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- Web App Meta Tags -->
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DITTE'S PAD" />
+  <meta name="application-name" content="DITTE'S PAD" />
+
+  <!-- Styles and JS -->
+  <link rel="stylesheet" href="ditte_pad.css" />
+
+  <style>
+    /* Position Back to Home link in top-right */
+    #backHome {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #007bff;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      z-index: 1000;
+      font-family: Arial, sans-serif;
+    }
+    #backHome:hover,
+    #backHome:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <a id="backHome" href="index.html" aria-label="Back to Home">← Back to Home</a>
+
+  <div id="sidebar">
+    <h2>Your Notes</h2>
+    <ul id="notesList"></ul>
+    <button id="newNoteBtn">+ New Note</button>
+    <div id="toggle-btn" title="Toggle sidebar">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+  <div id="editor">
+    <input type="text" id="noteTitle" placeholder="Note Title" disabled />
+    <textarea id="noteContent" placeholder="Write your note here..." disabled></textarea>
+  </div>
+  <script src="ditte_pad.js"></script>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered:', reg.scope))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+</script>
+</body>
+</html>

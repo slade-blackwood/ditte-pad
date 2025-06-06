@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credits & Dedication - DITTE'S PAD</title>
+
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      color: #333;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      position: relative;
+      min-height: 100vh;
+    }
+    /* Back to Home link styles */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    .back-home:hover,
+    .back-home:focus {
+      background: #0056b3;
+      outline: none;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .person {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .person img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #007bff;
+    }
+    .name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #007bff;
+    }
+    .role {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .dedication {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #222;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-home" aria-label="Back to Home">← Back to Home</a>
+
+  <h1>Credits & Dedication</h1>
+
+  <div class="person">
+    <img src="maxmillion_okyere_agyei.jpg" alt="Maxmillion Okyere Agyei (Rence Blunt)" />
+    <div class="name">Maxmillion Okyere Agyei (Rence Blunt)</div>
+    <div class="role">Developer</div>
+  </div>
+
+  <div class="person">
+    <img src="maryditte_naa_adukwey.jpg" alt="Maryditte Naa Adukwey" />
+    <div class="name">Maryditte Naa Adukwey</div>
+    <div class="role">Inspiration</div>
+  </div>
+
+  <div class="person">
+    <img src="asor_dora.jpg" alt="Asor Dora" />
+    <div class="name">Asor Dora</div>
+    <div class="role">Dedicated To</div>
+  </div>
+
+  <div class="person">
+    <img src="richard.jpg" alt="Richard" />
+    <div class="name">Richard</div>
+  </div>
+
+  <div class="person">
+    <img src="yvonne.jpg" alt="Yvonne" />
+    <div class="name">Yvonne</div>
+  </div>
+
+  <div class="person">
+    <img src="eric_yeboah.jpg" alt="Eric Yeboah" />
+    <div class="name">Eric Yeboah</div>
+  </div>
+
+  <div class="dedication">
+    This project is dedicated with heartfelt gratitude and appreciation to all who inspired, supported, and believed in it.
+  </div>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered:', reg.scope))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>DITTE'S PAD</title>
+
+  <!-- Favicon & App Icon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Web App Meta Tags -->
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DITTE'S PAD" />
+  <meta name="application-name" content="DITTE'S PAD" />
+
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      overflow-x: hidden; /* prevent horizontal scroll */
+      word-wrap: break-word;
+    }
+    nav {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 1000;
+    }
+    nav a {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #007bff;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px 40px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0;
+      color: #333;
+      letter-spacing: 0.1em;
+      max-width: 100%;
+    }
+    .creator {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: #888;
+      font-style: italic;
+      margin: 8px 0 20px 0;
+      max-width: 100%;
+      word-break: break-word;
+    }
+    p {
+      max-width: 600px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #555;
+      line-height: 1.5;
+      margin: 0 0 30px 0;
+      word-wrap: break-word;
+      padding: 0 10px;
+    }
+    a.button-link {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: #007bff;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      word-break: break-word;
+    }
+    a.button-link:hover, a.button-link:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="Credits & Dedication.html">Credits & Dedication</a>
+  </nav>
+
+  <main>
+    <h1>DITTE'S PAD</h1>
+    <div class="creator">Created by Rence Blunt</div>
+    <p>
+      Welcome to DITTE'S PAD — your offline notepad designed for quick note-taking, editing, and organizing all your thoughts without needing an internet connection.
+    </p>
+    <a href="ditte_pad.html" class="button-link">Go to DITTE'S PAD Notepad</a>
+  </main>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered:', reg.scope))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+</script>
+
+</body>
+</html>
+

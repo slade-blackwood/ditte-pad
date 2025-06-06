@@ -1,0 +1,156 @@
+ body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #sidebar {
+      width: 270px;
+      border-right: 1px solid #ccc;
+      padding: 10px;
+      box-sizing: border-box;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.3s ease;
+      position: relative;
+    }
+    #sidebar.collapsed {
+      width: 40px;
+      padding: 10px 5px;
+    }
+    #sidebar h2 {
+      margin: 0 0 10px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #notesList {
+      flex-grow: 1;
+      overflow-y: auto;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transition: opacity 0.3s ease;
+    }
+    #sidebar.collapsed #notesList,
+    #sidebar.collapsed #newNoteBtn,
+    #sidebar.collapsed h2 {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      user-select: none;
+    }
+    #notesList li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #notesList li:hover {
+      background: #ddd;
+    }
+    #notesList li.active {
+      background: white;
+      font-weight: bold;
+    }
+    .editBtn, .deleteBtn {
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      cursor: pointer;
+      user-select: none;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .editBtn {
+      background: #007bff;
+    }
+    .editBtn:hover {
+      background: #0056b3;
+    }
+    .deleteBtn {
+      background: #dc3545;
+      margin-left: 5px;
+    }
+    .deleteBtn:hover {
+      background: #a71d2a;
+    }
+    #newNoteBtn {
+      padding: 8px;
+      background: #28a745;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 4px;
+      transition: opacity 0.3s ease;
+    }
+    #editor {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+      transition: width 0.3s ease;
+      overflow: hidden;
+    }
+    #noteTitle {
+      font-size: 20px;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #noteContent {
+      flex-grow: 1;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    /* Toggle button styles */
+    #toggle-btn {
+      width: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 22px;
+      padding: 4px 0;
+      user-select: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    #toggle-btn .bar {
+      height: 3px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+    }
+    #toggle-btn:hover .bar {
+      background-color: #007bff;
+    }
